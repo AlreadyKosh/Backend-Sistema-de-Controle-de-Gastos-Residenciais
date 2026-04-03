@@ -16,6 +16,14 @@ namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.Data.Configurations
             entity.Property(c => c.Id)
             .UseIdentityByDefaultColumn();
 
+            entity.Property(c => c.Nome)
+                .HasColumnName("nome")
+                .HasMaxLength(200)
+                .IsRequired();
+
+            entity.HasIndex(c => c.Nome)
+                .IsUnique();
+
             entity.Property(c => c.Descricao)
                 .HasColumnName("descricao")
                 .HasMaxLength(400)

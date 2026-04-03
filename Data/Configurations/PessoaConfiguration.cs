@@ -21,6 +21,9 @@ namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.Data.Configurations
                 .HasMaxLength(200)
                 .IsRequired();
 
+            entity.HasIndex(c => c.Nome)
+                .IsUnique();
+
             entity.Property(p => p.Idade)
                 .HasColumnName("idade")
                 .IsRequired();

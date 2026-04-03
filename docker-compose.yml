@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  api:
+    build: ./Backend_Sistema_de_Controle_de_Gastos_Residenciais
+    ports:
+      - "5000:80"
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=controle_gastos;Username=postgres;Password=controle_gastos123.
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: controle_gastos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
