@@ -9,7 +9,7 @@ namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.Controllers
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
-    [Tags("Categorias")]
+    [Tags("Categoria")]
     public class CategoriaController : Controller
     {
         private readonly ICategoriaService _servicoCategoria;

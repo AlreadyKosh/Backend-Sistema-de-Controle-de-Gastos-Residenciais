@@ -1,5 +1,4 @@
-﻿using Backend_Sistema_de_Controle_de_Gastos_Residenciais.DTOs.Transacoes;
-using Backend_Sistema_de_Controle_de_Gastos_Residenciais.Models;
+﻿using Backend_Sistema_de_Controle_de_Gastos_Residenciais.Models;
 
 namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.Services.Interfaces
 {

@@ -2,6 +2,7 @@
 using Backend_Sistema_de_Controle_de_Gastos_Residenciais.Models;
 using Backend_Sistema_de_Controle_de_Gastos_Residenciais.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.Services
 {
@@ -47,7 +48,7 @@ namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.Services
             
                 await _context.SaveChangesAsync(ct);
             }
-            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("UNIQUE") ?? false)
+            catch (DbUpdateException ex) when (ex.InnerException is PostgresException pgEx && pgEx.SqlState == "23505")
             {
                 throw new Exception("Categoria com esse nome já existe.");
             }
@@ -74,14 +75,14 @@ namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.Services
 
         public async Task<bool> DeletarCategoriaAsync(long id, CancellationToken ct)
         {
-            var categorias = await _context.Categorias.FindAsync(id);
+            var categoria = await _context.Categorias.FindAsync(id);
 
-            if (categorias == null)
+            if (categoria == null)
             {
                 return false;
             }
 
-            _context.Categorias.Remove(categorias);
+            _context.Categorias.Remove(categoria);
 
             await _context.SaveChangesAsync(ct);
             return true;

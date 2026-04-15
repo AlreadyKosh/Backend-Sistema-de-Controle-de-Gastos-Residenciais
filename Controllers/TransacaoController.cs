@@ -9,7 +9,7 @@ namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.Controllers
     [ApiController]
     [Route("[controller]")]
     [Produces("application/json")]
-    [Tags("Transações")]
+    [Tags("Transação")]
     public class TransacaoController : ControllerBase
     {
         private readonly ITransacaoService _servicoTransacao;

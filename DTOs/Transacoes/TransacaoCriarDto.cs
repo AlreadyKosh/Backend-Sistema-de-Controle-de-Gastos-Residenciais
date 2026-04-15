@@ -11,8 +11,7 @@ namespace Backend_Sistema_de_Controle_de_Gastos_Residenciais.DTOs.Transacoes
         [DefaultValue("Conta de Luz")]
         public string Descricao { get; set; } = string.Empty;
         [Required]
-        [DefaultValue(250.50)]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Valor deve ser maior que zero")]
+        [Range(typeof(decimal), "0.01", "9999999999", ErrorMessage = "Valor deve ser maior que zero")]
         public decimal Valor { get; set; }
         [Required]
         [DefaultValue(TipoTransacao.Despesa)]

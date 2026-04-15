@@ -11,4 +11,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=build /app/out .
 
+RUN apt-get update && apt-get install -y libkrb5-3
+
 ENTRYPOINT ["dotnet", "Backend_Sistema_de_Controle_de_Gastos_Residenciais.dll"]
